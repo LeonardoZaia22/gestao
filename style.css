@@ -1,0 +1,348 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-image: url('img/fundo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* <-- ponto e vírgula aqui */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas fixas */
+    gap: 30px;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    top: 0;
+}
+
+.card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-6px);
+}
+
+.card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.card-img-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+    transform: scale(1);
+}
+
+.card:hover .card-img {
+    transform: scale(0.92);
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+    background: white;
+    transition: background-color 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.card:hover .card-content {
+    background-color: #fafafa;
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+    color: #e67e22;
+}
+
+.card p {
+    color: #666;
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.card:hover p {
+    color: #888;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    border-radius: 12px;
+    z-index: 3;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.card-img-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.card:hover .card-img-container::after {
+    opacity: 1;
+}
+
+/* Estilo para o ícone home preto */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 10;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.home-icon:hover {
+    background-color: #000000;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Card detalhado */
+.detail-card {
+    background-color: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    max-width: 1000px;
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.detail-content {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.detail-img-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.detail-img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    display: block;
+}
+
+.detail-info-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.detail-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.detail-subtitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #e67e22;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid #e67e22;
+    padding-bottom: 0.3rem;
+    display: inline-block;
+}
+
+.detail-list {
+    list-style-type: disc;
+    padding-left: 2rem;
+    font-size: 1.3rem;
+    color: #555;
+}
+
+.detail-list li {
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+}
+
+.detail-list li::marker {
+    color: #e67e22;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    .card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .card:hover .card-img {
+        transform: scale(0.94);
+    }
+    
+    .detail-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .detail-title {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    
+    .detail-subtitle {
+        font-size: 1.8rem;
+        text-align: center;
+        display: block;
+    }
+    
+    .detail-list {
+        font-size: 1.2rem;
+        padding-left: 2rem;
+    }
+    
+    .home-icon {
+        top: 15px;
+        left: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .cards-grid {
+        grid-template-columns: 1fr; /* 1 coluna em celulares */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    .card-img-container {
+        height: 180px;
+    }
+    
+    .card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .card:hover .card-img {
+        transform: scale(0.95);
+    }
+    
+    .detail-card {
+        padding: 1.5rem;
+    }
+    
+    .detail-title {
+        font-size: 1.9rem;
+    }
+    
+    .detail-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .detail-list {
+        font-size: 1.1rem;
+    }
+}
